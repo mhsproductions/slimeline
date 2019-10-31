@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from core.models import Slimeline, Event
 
+
+#themes
+light = "https://unpkg.com/bulmaswatch/lumen/bulmaswatch.min.css"
+dark = "https://unpkg.com/bulmaswatch/darkly/bulmaswatch.min.css"
+
 # Create your views here.
 def splash(request):
     if request.user.is_authenticated:
