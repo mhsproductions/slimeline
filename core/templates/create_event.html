@@ -5,12 +5,25 @@
     {% csrf_token %}
     <div class="control">
         <label class="label">Slimeline</label>
-        {% for slimeline in slimelines %}
+
         <label class="checkbox">Select Slimeline(s)
+            {% for slimeline in slimelines %}
             <input type="checkbox" value="{{slimeline.id}}" name="slimeline_selection" checked>
-                {{slimeline.name}}
+            {{slimeline.name}}
         </label>
         {% endfor %}
+    </div>
+    </br>
+    <div class="control">
+        <label class="label">Start Time</label>
+        <input class="input is-primary" name="start_time" placeholder="start time here..."></input>
+    </div>
+    </br>
+    <div class="control">
+        <label class="label">End Time</label>
+        <input class="input is-primary" name="end_time" placeholder="end time here..."></input>
+    </div>
+    </br>
     </div>
     <div class="control">
         <label class="label">Event Visibility</label>
@@ -23,34 +36,25 @@
             Private
         </label>
     </div>
-    <div class="control">
-            <label class="label">Event type</label>
-            <label class="radio">
-                <input type="radio" value="question" name="post_type" checked>
-                Question
-            </label>
-            <label class="radio">
-                <input type="radio" value="note" name="post_type">
-                Note
-            </label>
-        </div>
     </br>
     <div class="control">
-        <label class="label">Select folders</label>
-        {% for f in course.course_folders.all %}
-        <label class="checkbox">
-            <input type="checkbox" value="{{f.id}}" name="folders">
-            {{f.name}}
-        </label>
-        {% endfor %}
+        <label class="label">Event type</label>
+        <input class="input is-primary" placeholder="custom type here..."></input>
     </div>
     </br>
     <div>
-        <input name="summary" class="input is-primary" type="text" placeholder="Enter summary...">
+        <label class="label">Event Title</label>
+        <input name="title" class="input is-primary" type="text" placeholder="Enter summary..."></input>
     </div>
     </br>
     <div>
-        <textarea name="content" class="textarea is-primary"></textarea>
+        <label class="label">Event Summary</label>
+        <input name="summary" class="input is-primary" type="text" placeholder="Enter summary..."></input>
+    </div>
+    </br>
+    <div>
+        <label class="label">Event Content / Comment</label>
+        <textarea name="content" class="textarea is-primary" placeholder="Enter comment..."></textarea>
     </div>
     </br>
     <button type="submit" class="button is-primary">Create</button>

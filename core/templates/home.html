@@ -10,17 +10,39 @@
 </br>
 
 <a href="/create_slimeline">Create New Slimeline</a>
+</br>
 <a href="/create_event">Create New Event</a>
+</br>
 <h2 class="label">Your Slimelines</h2></br>
 <p>
+    {% if slimelines %}
     {% for slimeline in slimelines %}
-    <li>
-        {{slimeline.name}}
-    </li>
+    <div class="columns">
+        <div class="column post-list">
+            <div class="post card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        {{slimeline.name}}
+                    </p>
+                    <p>{{slimeline.created_at}}</p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        slimeline visual goes here! </br>
+                        {% for event in slimeline.events.all %}
+                        <li>
+                            {{event.title}}: {{event.summary}}, {{event.content}}
+                        </li>
+                        {% endfor %}
+                    </div>
+                </div>
+                </br>
+            </div>
+        </div>
+    </div>
     {%endfor%}
+    {% else %}
+    No slimelines.
+    {% endif %}
 </p>
-
-
-
-
 {% endblock %}

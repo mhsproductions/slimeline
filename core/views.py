@@ -15,8 +15,6 @@ def splash(request):
 @login_required
 def create_slimeline(request):
     if request.method == "POST":
-        print("RECEIVED POST REQUEST TO CREATE SLIMELINE")
-        print(request.POST.get("name"))
         slimeline = Slimeline.objects.create(name=request.POST.get("name"), owner=request.user)
         return redirect("/")
     if request.method == "GET":
@@ -27,7 +25,7 @@ def create_event(request):
     if request.method == "POST":
         event = Event.objects.create(
             author=request.user,
-            slimeline=request.POST.get("slimeline"),
+            slimeline=Slimeline.objects.all().get(id=request.POST.get("slimeline_selection")),
             title=request.POST.get("title"),
             content=request.POST.get("content"),
             is_private=request.POST.get("is_private") == "private",
@@ -37,7 +35,10 @@ def create_event(request):
         )
         return redirect("/")
     if request.method == "GET":
-        return render(request, "create_event.html", {})
+        # need to provide user's slimelines and folders
+        slimelines = Slimeline.objects.filter(owner=request.user)
+        print(slimelines)
+        return render(request, "create_event.html", {"user":request.user, "slimelines":Slimeline.objects.filter(owner=request.user)})
 
 @login_required
 def delete_slimeline(request):
