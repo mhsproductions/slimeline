@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+{% block body %}
+<h1 class="title">Create a Slimeline</h1>
+<a href="/"> Go Home</a>
+</br>
+<a href="/logout"> Logout</a>
+</br>
+</br>
+<form method="POST" action="/create_slimeline">
+    {% csrf_token %}
+    <div>
+        <input name="name" class="input is-primary" type="text" placeholder="Slimeline Name">
+    </div>
+    </br>
+    <button type="submit" class="button is-primary">Create</button>
+</form>
+{% endblock %}

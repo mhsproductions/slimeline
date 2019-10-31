@@ -1,0 +1,58 @@
+{% extends 'master.html' %}
+{% block body %}
+<h1 class="title">Create an Event</h1>
+<form method="POST" action="/create_event">
+    {% csrf_token %}
+    <div class="control">
+        <label class="label">Slimeline</label>
+        {% for slimeline in slimelines %}
+        <label class="checkbox">Select Slimeline(s)
+            <input type="checkbox" value="{{slimeline.id}}" name="slimeline_selection" checked>
+                {{slimeline.name}}
+        </label>
+        {% endfor %}
+    </div>
+    <div class="control">
+        <label class="label">Event Visibility</label>
+        <label class="radio">
+            <input type="radio" value="public" name="post_to" checked>
+            Public
+        </label>
+        <label class="radio">
+            <input type="radio" value="private" name="post_to">
+            Private
+        </label>
+    </div>
+    <div class="control">
+            <label class="label">Event type</label>
+            <label class="radio">
+                <input type="radio" value="question" name="post_type" checked>
+                Question
+            </label>
+            <label class="radio">
+                <input type="radio" value="note" name="post_type">
+                Note
+            </label>
+        </div>
+    </br>
+    <div class="control">
+        <label class="label">Select folders</label>
+        {% for f in course.course_folders.all %}
+        <label class="checkbox">
+            <input type="checkbox" value="{{f.id}}" name="folders">
+            {{f.name}}
+        </label>
+        {% endfor %}
+    </div>
+    </br>
+    <div>
+        <input name="summary" class="input is-primary" type="text" placeholder="Enter summary...">
+    </div>
+    </br>
+    <div>
+        <textarea name="content" class="textarea is-primary"></textarea>
+    </div>
+    </br>
+    <button type="submit" class="button is-primary">Create</button>
+</form>
+{% endblock %}

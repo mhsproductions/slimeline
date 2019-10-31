@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Slimeline 🐌</title>
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/lumen/bulmaswatch.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            {% block body %}{% endblock %}
+            <footer class="footer" position="absolute">
+                <div class="content has-text-centered">
+                    <p>
+                        <a href="/"> home</a> 
+                        
+                        <a href="logout"> logout</a>
+                         </br>
+                        Built with <strong>Django</strong> and <strong>Bulma</strong> </br>
+                         </br>
+                        add some slime to your life 🐌</br>
+                         </br>
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </section>
+</body>
+
+</html>

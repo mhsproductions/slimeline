@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+{% block body %}
+<h1 class="title">
+    Home
+</h1>
+
+<h2>
+    You are currently logged in as <strong>{{user.first_name}}</strong>
+</h2>
+</br>
+
+<a href="/create_slimeline">Create New Slimeline</a>
+<a href="/create_event">Create New Event</a>
+<h2 class="label">Your Slimelines</h2></br>
+<p>
+    {% for slimeline in slimelines %}
+    <li>
+        {{slimeline.name}}
+    </li>
+    {%endfor%}
+</p>
+
+
+
+
+{% endblock %}
