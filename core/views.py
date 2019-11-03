@@ -34,6 +34,7 @@ def create_event(request):
             title=request.POST.get("title"),
             content=request.POST.get("content"),
             is_private=request.POST.get("is_private") == "private",
+            summary=request.POST.get("summary"),
             good_slimes=0,
             start_time=request.POST.get("start_time"),
             end_time=request.POST.get("end_time")
