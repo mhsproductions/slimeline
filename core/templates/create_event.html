@@ -3,16 +3,6 @@
 <h1 class="title">Create an Event</h1>
 <form method="POST" action="/create_event">
     {% csrf_token %}
-    <div class="control">
-        <label class="label">Slimeline</label>
-
-        <label class="checkbox">Select Slimeline(s)
-            {% for slimeline in slimelines %}
-            <input type="checkbox" value="{{slimeline.id}}" name="slimeline_selection" checked>
-            {{slimeline.name}}
-        </label>
-        {% endfor %}
-    </div>
     </br>
     <div class="control">
         <label class="label">Start Time</label>
@@ -28,18 +18,18 @@
     <div class="control">
         <label class="label">Event Visibility</label>
         <label class="radio">
-            <input type="radio" value="public" name="post_to" checked>
+            <input type="radio" value="public" name="visibility" checked>
             Public
         </label>
         <label class="radio">
-            <input type="radio" value="private" name="post_to">
+            <input type="radio" value="private" name="visibility">
             Private
         </label>
     </div>
     </br>
     <div class="control">
-        <label class="label">Event type</label>
-        <input class="input is-primary" placeholder="custom type here..."></input>
+        <label class="label">Event Tags (space-delimited)</label>
+        <input class="input is-primary" name="tags" placeholder="custom type here..."></input>
     </div>
     </br>
     <div>

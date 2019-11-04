@@ -17,13 +17,12 @@ class Slimeline(models.Model):
 class Event(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="event_author", default="NULL")
-    slimeline = models.ForeignKey(Slimeline, related_name="events", on_delete=models.CASCADE, default=0)
     
     title = models.CharField(max_length=128, default="TITLE UNKNOWN")
     summary = models.CharField(max_length=128, default="SUMMARY UNKNOWN")
     content = models.TextField(default="")
     is_private = models.BooleanField(default=False) # visible to creator only
-    good_slimes = models.IntegerField(default=0) # equivalent of "like" button
+    upslimes = models.IntegerField(default=0) # equivalent of "like" button
     
     created_at = models.DateTimeField(auto_now_add=True)
     start_time = models.DateTimeField(auto_now_add=True)

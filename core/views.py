@@ -31,15 +31,15 @@ def create_event(request):
     if request.method == "POST":
         Event.objects.create(
             author=request.user,
-            slimeline=Slimeline.objects.all().get(id=request.POST.get("slimeline_selection")),
             title=request.POST.get("title"),
-            content=request.POST.get("content"),
-            is_private=request.POST.get("is_private") == "private",
             summary=request.POST.get("summary"),
-            good_slimes=0,
+            content=request.POST.get("content"),
+            is_private=request.POST.get("visibility") == "private",
+            upslimes=0,
             start_time=request.POST.get("start_time"),
             end_time=request.POST.get("end_time")
         )
+
         return redirect("/")
     if request.method == "GET":
         # need to provide user's slimelines and folders

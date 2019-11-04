@@ -10,10 +10,10 @@
 </h2>
 </br>
 
-<a href="/create_slimeline">Create New Slimeline</a>
-</br>
 <a href="/create_event">Create New Event</a>
 </br>
+<br/>
+
 <h2 class="label">Your Slimelines</h2></br>
 <p>
     {% if slimelines %}
@@ -30,7 +30,7 @@
                 <div class="card-content">
                     <div class="content">
                         slimeline visual goes here! </br>
-                        {% for event in slimeline.events.all %}
+                        {% for event in user.event_author.all %}
                         <li>
                             {{event.title}}: {{event.summary}}, {{event.content}}
                         </li>
