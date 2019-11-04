@@ -1,2 +1,5 @@
 # All python cache files
 *.pyc
+
+# Migration files 
+migrations/

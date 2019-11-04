@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from core.models import Slimeline, Event
 
+from datetime import date
 
 #themes
 light = "https://unpkg.com/bulmaswatch/lumen/bulmaswatch.min.css"
@@ -20,7 +21,7 @@ def splash(request):
 @login_required
 def create_slimeline(request):
     if request.method == "POST":
-        slimeline = Slimeline.objects.create(name=request.POST.get("name"), owner=request.user)
+        Slimeline.objects.create(name=request.POST.get("name"), owner=request.user, created_at=date.today())
         return redirect("/")
     if request.method == "GET":
         return render(request, "create_slimeline.html", {})
@@ -28,7 +29,7 @@ def create_slimeline(request):
 @login_required
 def create_event(request):
     if request.method == "POST":
-        event = Event.objects.create(
+        Event.objects.create(
             author=request.user,
             slimeline=Slimeline.objects.all().get(id=request.POST.get("slimeline_selection")),
             title=request.POST.get("title"),
@@ -79,5 +80,11 @@ def signup_(request):
         print("CREATED USER")
         print(request.POST['email'])
         print(request.POST['password'])
+
+        # Create the user's slimeline
+        # Slimeline.objects.create(name=request.POST.get("name"), owner=request.user, created_at=date.today())
+        slimeline_name= request.POST['username'] + "'s Slimeline"
+        Slimeline.objects.create(name=slimeline_name, owner=user, created_at=date.today())
+
         return redirect('/')
     return render(request, 'signup.html', {})

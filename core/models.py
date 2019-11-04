@@ -9,6 +9,7 @@ class Slimeline(models.Model):
     id = models.AutoField(primary_key=True, unique=True)
     name = models.CharField(max_length=128, default="SLIMELINE NAME UNKNOWN")
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="slimeline_owner", default="NULL")
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name + " by " + self.owner.first_name
