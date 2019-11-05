@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import splash, login_, logout_, signup_, create_slimeline, create_event
+from core.views import splash, login_, logout_, signup_, create_slimeline, create_event, display_event
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,6 @@ urlpatterns = [
     path("logout", logout_, name="logout"),
     path("signup", signup_, name="signup"),
     path("create_slimeline", create_slimeline, name="create_slimeline"),
-    path("create_event", create_event, name="create_event")
+    path("create_event", create_event, name="create_event"),
+    path("display_event", display_event, name="display_event"),
 ]

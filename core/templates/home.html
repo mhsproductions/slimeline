@@ -16,8 +16,6 @@
 
 <h2 class="label">Your Slimelines</h2></br>
 <p>
-    {% if slimelines %}
-    {% for slimeline in slimelines %}
     <div class="columns">
         <div class="column post-list">
             <div class="post card">
@@ -32,7 +30,7 @@
                         slimeline visual goes here! </br>
                         {% for event in user.event_author.all %}
                         <li>
-                            {{event.title}}: {{event.summary}}, {{event.content}}
+                            <a href="{% url 'display_event' %}#event_name">{{event.title}}</a>
                         </li>
                         {% endfor %}
                     </div>
@@ -41,9 +39,5 @@
             </div>
         </div>
     </div>
-    {%endfor%}
-    {% else %}
-    No slimelines.
-    {% endif %}
 </p>
 {% endblock %}

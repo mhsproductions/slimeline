@@ -13,8 +13,8 @@ dark = "https://unpkg.com/bulmaswatch/darkly/bulmaswatch.min.css"
 # Create your views here.
 def splash(request):
     if request.user.is_authenticated:
-        slimelines = Slimeline.objects.filter(owner=request.user)
-        return render(request, "home.html", {"user":request.user, "slimelines":slimelines})
+        slimeline = Slimeline.objects.filter(owner=request.user).first()
+        return render(request, "home.html", {"user":request.user, "slimeline":slimeline})
     return render(request, "splash.html", {})
 
 
@@ -46,6 +46,10 @@ def create_event(request):
         slimelines = Slimeline.objects.filter(owner=request.user)
         print(slimelines)
         return render(request, "create_event.html", {"user":request.user, "slimelines":Slimeline.objects.filter(owner=request.user)})
+
+@login_required
+def display_event(request):
+    return render(request, "display_event.html", {"user":request.user})
 
 @login_required
 def delete_slimeline(request):
