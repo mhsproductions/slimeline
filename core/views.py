@@ -48,8 +48,12 @@ def create_event(request):
         return render(request, "create_event.html", {"user":request.user, "slimelines":Slimeline.objects.filter(owner=request.user)})
 
 @login_required
-def display_event(request):
-    return render(request, "display_event.html", {"user":request.user})
+def display_event(request, title_):
+    #event = Event.objects.filter(author=request.user).filter(title=request.title)
+    event = Event.objects.filter(author=request.user).filter(title=title_).first()
+    print(event)
+
+    return render(request, "display_event.html", {"user":request.user, "event":event})
 
 @login_required
 def delete_slimeline(request):

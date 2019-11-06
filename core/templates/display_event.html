@@ -1,6 +1,18 @@
 {% extends 'master.html' %}
 {% block body %}
 
-<h2 class="label" name="event_name">hello</h2>
+<h1 class="title">
+    {{event.title}} ({{event.upslimes}} upslimes)
+</h1>
 
+{% if event.is_private %}
+    <h1>(<i>private</i> event: only seen by you.)</h1>
+{% endif %}
+
+<p>{{event.summary}}</p>
+<p>From {{event.start_time}} to {{event.end_time}}</p>
+<br>
+<p>{{event.content}}</p>
+
+<p>Created at {{event.created_at}}</p>
 {% endblock %}

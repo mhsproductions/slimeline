@@ -30,7 +30,7 @@
                         slimeline visual goes here! </br>
                         {% for event in user.event_author.all %}
                         <li>
-                            <a href="{% url 'display_event' %}#event_name">{{event.title}}</a>
+                            <a href="{{ event.get_absolute_url }}">{{event.title}}</a>
                         </li>
                         {% endfor %}
                     </div>

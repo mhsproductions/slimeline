@@ -26,5 +26,5 @@ urlpatterns = [
     path("signup", signup_, name="signup"),
     path("create_slimeline", create_slimeline, name="create_slimeline"),
     path("create_event", create_event, name="create_event"),
-    path("display_event", display_event, name="display_event"),
+    path("display_event/<str:title_>", display_event, name="display_event"),
 ]

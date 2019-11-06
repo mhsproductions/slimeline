@@ -28,7 +28,8 @@ class Event(models.Model):
     start_time = models.DateTimeField(auto_now_add=True)
     end_time = models.DateTimeField(auto_now_add=True)
 
-    
+    def get_absolute_url(self):
+        return "display_event/%s" % self.title
     
     def __str__(self):
         return self.author.username + " posted : " + self.title
